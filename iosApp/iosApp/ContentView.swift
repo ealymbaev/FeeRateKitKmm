@@ -4,11 +4,13 @@ import SwiftUI
 class ContentViewModel: ObservableObject {
     @Published var text = "Loading..."
 
+    private let feeRateKit = FeeRateKit(databaseDriverFactory: DatabaseDriverFactory())
+
     init() {
         Task {
             let text: String
             do {
-                let launches = try await FeeRateKit().getLaunches()
+                let launches = try await feeRateKit.getLaunches(forceReload: false)
 
                 text = launches.map { $0.missionName }.joined(separator: "\n")
             } catch {

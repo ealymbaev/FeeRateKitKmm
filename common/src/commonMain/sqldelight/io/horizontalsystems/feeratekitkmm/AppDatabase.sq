@@ -1,0 +1,14 @@
+CREATE TABLE RocketLaunchModel (
+  flight_number INTEGER NOT NULL,
+  mission_name TEXT NOT NULL
+);
+
+insertRocketLaunch:
+INSERT INTO RocketLaunchModel(flight_number, mission_name)
+VALUES(?, ?);
+
+removeAllRocketLaunches:
+DELETE FROM RocketLaunchModel;
+
+selectAllRocketLaunchesInfo:
+SELECT RocketLaunchModel.* FROM RocketLaunchModel;
