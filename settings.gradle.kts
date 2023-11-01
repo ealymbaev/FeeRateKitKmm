@@ -16,4 +16,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "FeeRateKitKmm"
 include(":androidApp")
-include(":FeeRateKit")
+include(":common")

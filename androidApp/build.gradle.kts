@@ -39,7 +39,7 @@ android {
 }
 
 dependencies {
-    implementation(projects.feeRateKit)
+    implementation(projects.common)
     implementation(libs.compose.ui)
     implementation(libs.compose.ui.tooling.preview)
     implementation(libs.compose.material3)

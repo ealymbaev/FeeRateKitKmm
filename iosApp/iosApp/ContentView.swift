@@ -1,4 +1,4 @@
-import FeeRateKit
+import FeeRateKitKmm
 import SwiftUI
 
 class ContentViewModel: ObservableObject {
@@ -8,7 +8,9 @@ class ContentViewModel: ObservableObject {
         Task {
             let text: String
             do {
-                text = try await Greeting().greeting()
+                let launches = try await FeeRateKit().getLaunches()
+
+                text = launches.map { $0.missionName }.joined(separator: "\n")
             } catch {
                 text = error.localizedDescription
             }

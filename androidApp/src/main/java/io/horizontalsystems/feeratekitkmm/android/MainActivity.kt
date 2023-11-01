@@ -8,7 +8,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import io.horizontalsystems.feeratekitkmm.Greeting
+import io.horizontalsystems.feeratekitkmm.FeeRateKit
 import kotlinx.coroutines.launch
 
 class MainActivity : ComponentActivity() {
@@ -25,7 +25,7 @@ class MainActivity : ComponentActivity() {
                     LaunchedEffect(true) {
                         scope.launch {
                             text = try {
-                                Greeting().greeting()
+                                FeeRateKit().getLaunches().map { it.missionName }.joinToString("\n")
                             } catch (e: Exception) {
                                 e.localizedMessage ?: "error"
                             }
