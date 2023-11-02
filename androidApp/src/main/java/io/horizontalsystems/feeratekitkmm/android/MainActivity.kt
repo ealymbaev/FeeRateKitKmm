@@ -28,7 +28,7 @@ class MainActivity : ComponentActivity() {
                     LaunchedEffect(true) {
                         scope.launch {
                             text = try {
-                                feeRateKit.getLaunches(false).map { it.missionName }.joinToString("\n")
+                                feeRateKit.getTopCoins(false).map { "${it.name} - ${it.code} - ${it.price.toStringExpanded()}" }.joinToString("\n")
                             } catch (e: Exception) {
                                 e.localizedMessage ?: "error"
                             }

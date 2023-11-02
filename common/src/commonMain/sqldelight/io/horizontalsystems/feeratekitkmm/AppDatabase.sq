@@ -1,14 +1,16 @@
-CREATE TABLE RocketLaunchModel (
-  flight_number INTEGER NOT NULL,
-  mission_name TEXT NOT NULL
+CREATE TABLE CoinModel (
+  uid TEXT NOT NULL PRIMARY KEY,
+  name TEXT NOT NULL,
+  code TEXT NOT NULL,
+  price TEXT NOT NULL
 );
 
-insertRocketLaunch:
-INSERT INTO RocketLaunchModel(flight_number, mission_name)
-VALUES(?, ?);
+insertCoin:
+INSERT INTO CoinModel(uid, name, code, price)
+VALUES(?, ?, ?, ?);
 
-removeAllRocketLaunches:
-DELETE FROM RocketLaunchModel;
+removeAllCoins:
+DELETE FROM CoinModel;
 
-selectAllRocketLaunchesInfo:
-SELECT RocketLaunchModel.* FROM RocketLaunchModel;
+getAllCoins:
+SELECT CoinModel.* FROM CoinModel;

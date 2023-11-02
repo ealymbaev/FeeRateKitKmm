@@ -2,17 +2,17 @@ package io.horizontalsystems.feeratekitkmm
 
 class FeeRateKit(databaseDriverFactory: DatabaseDriverFactory) {
     private val database = Database(databaseDriverFactory)
-    private val api = SpaceXApi()
+    private val api = MarketApi()
 
     @Throws(Exception::class)
-    suspend fun getLaunches(forceReload: Boolean): List<RocketLaunch> {
-        val cachedLaunches = database.getAllLaunches()
-        return if (cachedLaunches.isNotEmpty() && !forceReload) {
-            cachedLaunches
+    suspend fun getTopCoins(forceReload: Boolean): List<Coin> {
+        val cachedCoins = database.getAllCoins()
+        return if (cachedCoins.isNotEmpty() && !forceReload) {
+            cachedCoins
         } else {
-            api.getAllLaunches().also {
+            api.getTopCoins().also {
                 database.clearDatabase()
-                database.createLaunches(it)
+                database.createCoins(it)
             }
         }
     }

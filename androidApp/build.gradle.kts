@@ -46,4 +46,5 @@ dependencies {
     implementation(libs.androidx.activity.compose)
     debugImplementation(libs.compose.ui.tooling)
     implementation(libs.kotlinx.coroutines.core)
+    implementation(libs.bignum)
 }

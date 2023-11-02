@@ -10,9 +10,9 @@ class ContentViewModel: ObservableObject {
         Task {
             let text: String
             do {
-                let launches = try await feeRateKit.getLaunches(forceReload: false)
+                let coins = try await feeRateKit.getTopCoins(forceReload: false)
 
-                text = launches.map { $0.missionName }.joined(separator: "\n")
+                text = coins.map { "\($0.uid) - \($0.name) - \($0.price.toStringExpanded())" }.joined(separator: "\n")
             } catch {
                 text = error.localizedDescription
             }
